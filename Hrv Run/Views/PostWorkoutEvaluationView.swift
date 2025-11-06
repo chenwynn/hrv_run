@@ -18,7 +18,6 @@ struct PostWorkoutEvaluationView: View {
     
     @State private var selectedFeeling: SubjectiveFeeling = .moderate
     @State private var showingSaved = false
-    @State private var isLoading = true
     
     private var hrvChange: Double {
         guard let postHRV = postWorkoutHRV else { return 0 }
@@ -27,48 +26,35 @@ struct PostWorkoutEvaluationView: View {
     
     var body: some View {
         NavigationStack {
-            Group {
-                if isLoading {
-                    // 加载指示器
-                    VStack(spacing: 20) {
-                        ProgressView()
-                            .scaleEffect(1.5)
-                        Text("Loading training data...".localized())
-                            .font(.body)
-                            .foregroundColor(.secondary)
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else {
-                    ScrollView {
-                        VStack(spacing: 24) {
-                            // 1. 训练数据
-                            workoutDataSection
-                            
-                            // 2. HRV变化分析
-                            hrvAnalysisSection
-                            
-                            // 3. 主观感受选择
-                            if postWorkoutHRV != nil {
-                                subjectiveFeelingSection
-                                
-                                // 4. AI综合评估
-                                aiAnalysisSection
-                            } else {
-                                // 提示需要测量HRV
-                                needMeasurementPrompt
-                            }
-                        }
-                        .padding()
+            ScrollView {
+                VStack(spacing: 24) {
+                    // 1. 训练数据
+                    workoutDataSection
+                        // .onAppear {
+                        //     print("🟢 [Evaluation View] View appeared")
+                        //     print("🟢 [Evaluation View] Workout: \(workout.type)")
+                        //     print("🟢 [Evaluation View] Pre-HRV: \(preWorkoutHRV)ms")
+                        //     print("🟢 [Evaluation View] Post-HRV: \(postWorkoutHRV != nil ? "\(postWorkoutHRV!)ms" : "nil")")
+                        // }
+                    
+                    // 2. HRV变化分析
+                    hrvAnalysisSection
+                    
+                    // 3. 主观感受选择
+                    if postWorkoutHRV != nil {
+                        subjectiveFeelingSection
+                        
+                        // 4. AI综合评估
+                        aiAnalysisSection
+                    } else {
+                        // 提示需要测量HRV
+                        needMeasurementPrompt
                     }
                 }
+                .padding()
             }
             .navigationTitle("Post-Workout Evaluation".localized())
             .navigationBarTitleDisplayMode(.inline)
-            .task {
-                // 短暂延迟后显示内容，确保动画流畅
-                try? await Task.sleep(nanoseconds: 100_000_000) // 0.1秒
-                isLoading = false
-            }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Cancel".localized()) {

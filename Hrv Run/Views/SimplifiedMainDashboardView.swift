@@ -14,8 +14,7 @@ struct SimplifiedMainDashboardView: View {
     @State private var showSettings = false
     @State private var showDetailedData = false
     @State private var showWorkoutsList = false
-    @State private var showEvaluationSheet = false
-    @State private var evaluationData: (WorkoutSummary, Double, Double?)?
+    @State private var evaluationItem: EvaluationItem?
     
     var body: some View {
         NavigationStack {
@@ -69,40 +68,75 @@ struct SimplifiedMainDashboardView: View {
                 WorkoutSelectionSheet(
                     viewModel: viewModel,
                     onWorkoutSelected: { workout in
-                        // 先关闭列表
-                        showWorkoutsList = false
+                        // print("🔵 [Step 1] User clicked workout: \(workout.type) at \(workout.startDate)")
                         
-                        // 异步加载数据并打开评估界面
+                        // 异步加载数据
                         Task {
+                            // print("🔵 [Step 2] Started async task")
+                            
+                            // 1. 先加载HRV数据
+                            // print("🔵 [Step 3] Loading HRV data...")
                             let hrvData = await viewModel.getPostWorkoutHRVData(for: workout)
+                            // print("🔵 [Step 4] HRV data loaded")
+                            
+                            // 2. 准备数据
+                            var item: EvaluationItem?
                             switch hrvData {
                             case .hasData(let pre, let post, _):
-                                evaluationData = (workout, pre, post)
-                            case .needPostMeasurement(_, let preHRV):
-                                evaluationData = (workout, preHRV, nil)
+                                item = EvaluationItem(workout: workout, preHRV: pre, postHRV: post)
+                                // print("✅ [Step 5] Data ready - Pre: \(pre)ms, Post: \(post)ms")
+                            case .needPostMeasurement(_, let pre):
+                                item = EvaluationItem(workout: workout, preHRV: pre, postHRV: nil)
+                                // print("⚠️ [Step 5] Need post measurement - Pre: \(pre)ms")
                             default:
-                                evaluationData = nil
+                                item = nil
+                                // print("❌ [Step 5] No data available")
                             }
                             
-                            // 数据准备好后才打开
-                            if evaluationData != nil {
-                                // 延迟一下确保前一个sheet完全关闭
-                                try? await Task.sleep(nanoseconds: 300_000_000) // 0.3秒
-                                showEvaluationSheet = true
+                            // 3. 确保数据准备好了
+                            guard item != nil else {
+                                // print("❌ [Step 6] Evaluation item is nil, aborting")
+                                return
+                            }
+                            // print("✅ [Step 6] Data confirmed - Workout: \(item!.workout.type)")
+                            
+                            // 4. 关闭列表
+                            await MainActor.run {
+                                // print("🔵 [Step 7] Closing workout list sheet")
+                                showWorkoutsList = false
+                            }
+                            
+                            // 5. 等待列表sheet关闭动画完成
+                            // print("🔵 [Step 8] Waiting for sheet close animation (0.4s)...")
+                            try? await Task.sleep(nanoseconds: 400_000_000)
+                            // print("🔵 [Step 9] Animation wait complete")
+                            
+                            // 6. 设置评估item（这会触发sheet打开）
+                            await MainActor.run {
+                                // print("🔵 [Step 10] Setting evaluation item")
+                                // print("🔵 [Step 10a] Workout: \(item!.workout.type)")
+                                // print("🔵 [Step 10b] Pre-HRV: \(item!.preHRV)ms")
+                                // print("🔵 [Step 10c] Post-HRV: \(item!.postHRV != nil ? "\(item!.postHRV!)ms" : "nil")")
+                                evaluationItem = item
+                                // print("✅ [Step 11] Evaluation item set, sheet should open")
                             }
                         }
                     }
                 )
             }
-            .sheet(isPresented: $showEvaluationSheet) {
-                if let data = evaluationData {
-                    PostWorkoutEvaluationView(
-                        viewModel: viewModel,
-                        workout: data.0,
-                        preWorkoutHRV: data.1,
-                        postWorkoutHRV: data.2
-                    )
-                }
+            .sheet(item: $evaluationItem) { item in
+                PostWorkoutEvaluationView(
+                    viewModel: viewModel,
+                    workout: item.workout,
+                    preWorkoutHRV: item.preHRV,
+                    postWorkoutHRV: item.postHRV
+                )
+                // .onAppear {
+                //     print("🟢 [Sheet] Evaluation sheet appeared with item")
+                //     print("🟢 [Sheet] Workout: \(item.workout.type)")
+                //     print("🟢 [Sheet] Pre-HRV: \(item.preHRV)ms")
+                //     print("🟢 [Sheet] Post-HRV: \(item.postHRV != nil ? "\(item.postHRV!)ms" : "nil")")
+                // }
             }
             .refreshable {
                 await viewModel.refresh()
@@ -464,6 +498,19 @@ struct EmptyStateView: View {
                 .multilineTextAlignment(.center)
         }
         .padding()
+    }
+}
+
+// MARK: - Evaluation Item
+
+struct EvaluationItem: Identifiable, Equatable {
+    let id = UUID()
+    let workout: WorkoutSummary
+    let preHRV: Double
+    let postHRV: Double?
+    
+    static func == (lhs: EvaluationItem, rhs: EvaluationItem) -> Bool {
+        return lhs.id == rhs.id
     }
 }
 

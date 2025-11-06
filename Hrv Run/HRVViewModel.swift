@@ -205,34 +205,51 @@ class HRVViewModel: ObservableObject {
     
     /// 获取训练后HRV数据
     func getPostWorkoutHRVData(for workout: WorkoutSummary) async -> PostWorkoutHRVData {
+        // print("📊 [ViewModel] Getting HRV data for workout: \(workout.type)")
+        // print("📊 [ViewModel] Workout time: \(workout.startDate) - \(workout.endDate)")
+        // print("📊 [ViewModel] Total HRV samples: \(recentHRVSamples.count)")
+        
         // 1. 获取训练前HRV（当天早晨）
         let dayStart = Calendar.current.startOfDay(for: workout.startDate)
+        // print("📊 [ViewModel] Day start: \(dayStart)")
+        
         let morningHRVs = recentHRVSamples.filter { sample in
             sample.date >= dayStart && sample.date < workout.startDate
         }
+        // print("📊 [ViewModel] Morning HRVs found: \(morningHRVs.count)")
+        // morningHRVs.forEach { print("  - \($0.date): \($0.value)ms") }
         
         guard let preHRV = morningHRVs.last else {
+            // print("❌ [ViewModel] No morning HRV found")
             return .needMorningMeasurement
         }
+        // print("✅ [ViewModel] Pre-workout HRV: \(preHRV.value)ms at \(preHRV.date)")
         
         // 2. 获取训练后HRV（训练结束后3小时内）
         let postWindowEnd = min(
             workout.endDate.addingTimeInterval(3 * 3600),
             Date()
         )
+        // print("📊 [ViewModel] Post-workout window: \(workout.endDate) - \(postWindowEnd)")
         
         let postWorkoutHRVs = recentHRVSamples.filter { sample in
             sample.date >= workout.endDate && sample.date <= postWindowEnd
         }
+        // print("📊 [ViewModel] Post-workout HRVs found: \(postWorkoutHRVs.count)")
+        // postWorkoutHRVs.forEach { print("  - \($0.date): \($0.value)ms") }
         
         if let postHRV = postWorkoutHRVs.first {
+            // print("✅ [ViewModel] Post-workout HRV: \(postHRV.value)ms at \(postHRV.date)")
             return .hasData(pre: preHRV.value, post: postHRV.value, workout: workout)
         } else {
             // 检查是否还在窗口期
             let timeSince = Date().timeIntervalSince(workout.endDate)
+            // print("📊 [ViewModel] Time since workout: \(timeSince/60) minutes")
             if timeSince < 3 * 3600 {
+                // print("⚠️ [ViewModel] In window but no post-HRV measurement")
                 return .needPostMeasurement(workout: workout, preHRV: preHRV.value)
             } else {
+                // print("❌ [ViewModel] Missed 3-hour measurement window")
                 return .missedWindow
             }
         }
