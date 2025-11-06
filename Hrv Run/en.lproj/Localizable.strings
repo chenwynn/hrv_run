@@ -1,0 +1,283 @@
+/* Main Screen */
+"Today's Recommendation" = "Today's Recommendation";
+"HRV Status" = "HRV Status";
+"Current HRV" = "Current HRV";
+"Baseline" = "Baseline";
+"Recovery Score" = "Recovery Score";
+"Trend" = "Trend";
+"Refresh" = "Refresh";
+"Settings" = "Settings";
+
+/* Status */
+"Rest recommended. Your body needs recovery." = "Rest recommended. Your body needs recovery.";
+"Moderate exercise is suitable." = "Moderate exercise is suitable.";
+"Great condition! Good time for intense training." = "Great condition! Good time for intense training.";
+
+/* Advice */
+"Your body needs rest today. Focus on recovery activities like light stretching or walking." = "Your body needs rest today. Focus on recovery activities like light stretching or walking.";
+"Your recovery is excellent! This is a great day for high-intensity training or a challenging workout." = "Your recovery is excellent! This is a great day for high-intensity training or a challenging workout.";
+"Your recovery is good. You can proceed with moderate training as planned." = "Your recovery is good. You can proceed with moderate training as planned.";
+"Your recovery is below baseline. Consider light exercise or rest." = "Your recovery is below baseline. Consider light exercise or rest.";
+"Your HRV is trending upward, which is a positive sign." = "Your HRV is trending upward, which is a positive sign.";
+"Your HRV is trending downward. Be mindful of overtraining." = "Your HRV is trending downward. Be mindful of overtraining.";
+"Your HRV is stable." = "Your HRV is stable.";
+
+/* Recovery Advice */
+"Continue your current recovery practices. Your body is responding well." = "Continue your current recovery practices. Your body is responding well.";
+"Maintain good sleep hygiene and stay hydrated. Consider adding a recovery day if needed." = "Maintain good sleep hygiene and stay hydrated. Consider adding a recovery day if needed.";
+"Prioritize sleep (8+ hours), hydration, and nutrition. Avoid intense training until HRV improves." = "Prioritize sleep (8+ hours), hydration, and nutrition. Avoid intense training until HRV improves.";
+
+/* Workout Intensity */
+"Very Light" = "Very Light";
+"Light" = "Light";
+"Moderate" = "Moderate";
+"High" = "High";
+"Recovery pace, can hold a conversation easily" = "Recovery pace, can hold a conversation easily";
+"Easy pace, comfortable breathing" = "Easy pace, comfortable breathing";
+"Steady pace, somewhat hard breathing" = "Steady pace, somewhat hard breathing";
+"Fast pace, hard breathing" = "Fast pace, hard breathing";
+
+/* Workout Types */
+"Recovery Run" = "Recovery Run";
+"Walking" = "Walking";
+"Easy Run" = "Easy Run";
+"Tempo Run" = "Tempo Run";
+"Interval Training" = "Interval Training";
+"Long Run" = "Long Run";
+
+/* Workout Effect */
+"Excellent" = "Excellent";
+"Good" = "Good";
+"Moderate" = "Moderate";
+"Challenging" = "Challenging";
+
+/* Units */
+"min" = "min";
+"ms" = "ms";
+
+/* Main Dashboard */
+"Today's Recommendation" = "Today's Recommendation";
+"HRV Status" = "HRV Status";
+"Current HRV" = "Current HRV";
+"Baseline" = "Baseline";
+"Recovery Score" = "Recovery Score";
+"Intensity" = "Intensity";
+"Duration" = "Duration";
+"Type" = "Type";
+"Direction" = "Direction";
+
+/* Settings */
+"Settings" = "Settings";
+"Appearance" = "Appearance";
+"Language" = "Language";
+"Theme" = "Theme";
+"Follow System" = "Follow System";
+"Light" = "Light";
+"Dark" = "Dark";
+"Customize language and theme settings." = "Customize language and theme settings.";
+"Health Permissions" = "Health Permissions";
+"Request Authorization" = "Request Authorization";
+"Grant access to read HRV data and save workout information." = "Grant access to read HRV data and save workout information.";
+"Notifications" = "Notifications";
+"Enable Notifications" = "Enable Notifications";
+"Notification Permission Granted" = "Notification Permission Granted";
+"Request Notification Permission" = "Request Notification Permission";
+"Receive notifications when your HRV data updates or after workouts with personalized recommendations." = "Receive notifications when your HRV data updates or after workouts with personalized recommendations.";
+"HRV Data" = "HRV Data";
+"Baseline Mean" = "Baseline Mean";
+"Sample Count" = "Sample Count";
+"Baseline Reliable" = "Baseline Reliable";
+"Recalculate Baseline" = "Recalculate Baseline";
+"Your baseline is calculated from the last 30 days of HRV data." = "Your baseline is calculated from the last 30 days of HRV data.";
+"About" = "About";
+"Version" = "Version";
+"Privacy Policy" = "Privacy Policy";
+"HRV Run analyzes your Heart Rate Variability to provide personalized running recommendations." = "HRV Run analyzes your Heart Rate Variability to provide personalized running recommendations.";
+"All data is processed locally on your device." = "All data is processed locally on your device.";
+"Done" = "Done";
+
+/* Errors */
+"Error" = "Error";
+"No Data" = "No Data";
+"Please authorize access to Health data to use this app." = "Please authorize access to Health data to use this app.";
+"Not enough data to establish baseline. Wear your Apple Watch for at least 20 days." = "Not enough data to establish baseline. Wear your Apple Watch for at least 20 days.";
+
+/* Authorization */
+"Welcome to HRV Run" = "Welcome to HRV Run";
+"This app analyzes your Heart Rate Variability (HRV) to provide personalized running recommendations." = "This app analyzes your Heart Rate Variability (HRV) to provide personalized running recommendations.";
+"We need access to your Health data to:" = "We need access to your Health data to:";
+"Read your HRV data" = "Read your HRV data";
+"Read your workout history" = "Read your workout history";
+"Save your workout data" = "Save your workout data";
+"Your data stays on your device and is never uploaded to any server." = "Your data stays on your device and is never uploaded to any server.";
+"Grant Access" = "Grant Access";
+
+/* Charts */
+"7-Day Trend" = "7-Day Trend";
+"30-Day Trend" = "30-Day Trend";
+"Low Zone" = "Low Zone";
+"Normal Zone" = "Normal Zone";
+"High Zone" = "High Zone";
+
+/* Notifications */
+"Excellent Recovery!" = "Excellent Recovery!";
+"Good Recovery" = "Good Recovery";
+"Moderate Recovery" = "Moderate Recovery";
+"Low Recovery" = "Low Recovery";
+"Rest Needed" = "Rest Needed";
+"Today's Training Recommendation" = "Today's Training Recommendation";
+"Great Workout!" = "Great Workout!";
+"Good Workout" = "Good Workout";
+"Moderate Workout" = "Moderate Workout";
+"Challenging Workout" = "Challenging Workout";
+"Your HRV is recovering well. Excellent training session!" = "Your HRV is recovering well. Excellent training session!";
+"Your HRV is recovering normally. Good job!" = "Your HRV is recovering normally. Good job!";
+"Your HRV dropped more than usual. Consider easier training tomorrow." = "Your HRV dropped more than usual. Consider easier training tomorrow.";
+"Your HRV dropped significantly. Make sure to rest and recover properly." = "Your HRV dropped significantly. Make sure to rest and recover properly.";
+
+/* Explanations */
+"What is this?" = "What is this?";
+"Understanding the Ranges" = "Understanding the Ranges";
+"Excellent" = "Excellent";
+"Good" = "Good";
+"Needs Attention" = "Needs Attention";
+"Recommendations" = "Recommendations";
+"Done" = "Done";
+
+/* Recovery Score Explanation */
+"Recovery Score Explanation" = "Recovery Score Explanation";
+"Recovery Score Description" = "Your recovery score (0-100) indicates how ready your body is for training based on your current HRV compared to your personal baseline.";
+"Excellent recovery. Your body is fully recovered and ready for high-intensity training." = "Excellent recovery. Your body is fully recovered and ready for high-intensity training.";
+"Good recovery. Suitable for moderate training as planned." = "Good recovery. Suitable for moderate training as planned.";
+"Below optimal. Your body needs more rest. Consider light exercise or rest day." = "Below optimal. Your body needs more rest. Consider light exercise or rest day.";
+"85-100: High-intensity training, intervals, tempo runs" = "85-100: High-intensity training, intervals, tempo runs";
+"70-84: Moderate training, easy runs, steady pace" = "70-84: Moderate training, easy runs, steady pace";
+"50-69: Light exercise, recovery runs, walking" = "50-69: Light exercise, recovery runs, walking";
+"0-49: Rest or very light activity recommended" = "0-49: Rest or very light activity recommended";
+
+/* HRV Status Explanation */
+"HRV Status Explanation" = "HRV Status Explanation";
+"HRV Status Description" = "HRV (Heart Rate Variability) measures the variation in time between heartbeats. Higher values generally indicate better recovery and readiness.";
+"Above Baseline + 1SD" = "Above Baseline + 1SD";
+"High Zone: Excellent recovery, body is well-rested and ready for intense training." = "High Zone: Excellent recovery, body is well-rested and ready for intense training.";
+"Baseline ± 1SD" = "Baseline ± 1SD";
+"Normal Zone: Good recovery, suitable for regular training." = "Normal Zone: Good recovery, suitable for regular training.";
+"Below Baseline - 1SD" = "Below Baseline - 1SD";
+"Low Zone: Body needs rest, avoid high-intensity training." = "Low Zone: Body needs rest, avoid high-intensity training.";
+"High Zone: Great time for challenging workouts, PRs, hard sessions" = "High Zone: Great time for challenging workouts, PRs, hard sessions";
+"Normal Zone: Proceed with planned training, maintain consistency" = "Normal Zone: Proceed with planned training, maintain consistency";
+"Low Zone: Focus on recovery, sleep 8+ hours, stay hydrated" = "Low Zone: Focus on recovery, sleep 8+ hours, stay hydrated";
+
+/* Trend Explanation */
+"Trend Explanation" = "Trend Explanation";
+"Trend Description" = "Your HRV trend shows how your recovery is changing over time. It helps identify patterns of improvement or accumulated fatigue.";
+"Improving (↑)" = "Improving (↑)";
+"Your HRV is trending upward, indicating improving recovery and adaptation to training." = "Your HRV is trending upward, indicating improving recovery and adaptation to training.";
+"Stable (→)" = "Stable (→)";
+"Your HRV is stable, indicating consistent recovery status." = "Your HRV is stable, indicating consistent recovery status.";
+"Declining (↓)" = "Declining (↓)";
+"Your HRV is trending downward, may indicate accumulated fatigue or overtraining." = "Your HRV is trending downward, may indicate accumulated fatigue or overtraining.";
+"Improving: Good sign! You can maintain or slightly increase training load" = "Improving: Good sign! You can maintain or slightly increase training load";
+"Stable: Maintain current training and recovery balance" = "Stable: Maintain current training and recovery balance";
+"Declining: Warning sign! Add rest days, reduce intensity, focus on recovery" = "Declining: Warning sign! Add rest days, reduce intensity, focus on recovery";
+"Monitor for 3-5 days before making major training changes" = "Monitor for 3-5 days before making major training changes";
+
+/* Chart Explanation */
+"HRV Chart Explanation" = "HRV Chart Explanation";
+"HRV Chart Description" = "This chart shows your HRV measurements over the past 7 days compared to your personal baseline and thresholds.";
+"Above Green Line" = "Above Green Line";
+"Data points above the high threshold indicate excellent recovery days." = "Data points above the high threshold indicate excellent recovery days.";
+"Between Green and Red Lines" = "Between Green and Red Lines";
+"Data points in normal range indicate typical recovery status." = "Data points in normal range indicate typical recovery status.";
+"Below Red Line" = "Below Red Line";
+"Data points below low threshold indicate need for recovery." = "Data points below low threshold indicate need for recovery.";
+"Blue Dashed Line: Your personal baseline (average)" = "Blue Dashed Line: Your personal baseline (average)";
+"Green Dashed Line: High threshold (baseline + 1SD)" = "Green Dashed Line: High threshold (baseline + 1SD)";
+"Red Dashed Line: Low threshold (baseline - 1SD)" = "Red Dashed Line: Low threshold (baseline - 1SD)";
+"Purple Line: Your actual HRV measurements over time" = "Purple Line: Your actual HRV measurements over time";
+"Look for patterns: consistent highs, lows, or fluctuations" = "Look for patterns: consistent highs, lows, or fluctuations";
+
+
+/* Calendar Heatmap */
+"HRV Calendar" = "HRV Calendar";
+"Last 30 Days" = "Last 30 Days";
+"Low" = "Low";
+"Normal" = "Normal";
+"High" = "High";
+"vs Baseline" = "vs Baseline";
+"Below your baseline - Consider rest or light activity" = "Below your baseline - Consider rest or light activity";
+"Above your baseline - Good day for training" = "Above your baseline - Good day for training";
+"Within normal range - Moderate training suitable" = "Within normal range - Moderate training suitable";
+"30-Day Summary" = "30-Day Summary";
+"Average" = "Average";
+"Highest" = "Highest";
+"Lowest" = "Lowest";
+"Stability" = "Stability";
+
+/* Data Quality */
+"Poor" = "Poor";
+"Fair" = "Fair";
+"Very Stable" = "Very Stable";
+"Stable" = "Stable";
+"Variable" = "Variable";
+
+/* Recovery Level */
+"Very Poor" = "Very Poor";
+
+/* Multi-Dimensional Recovery */
+"RHR" = "RHR";
+"Sleep" = "Sleep";
+"Load" = "Load";
+"Your recovery is excellent! Perfect day for high-intensity training or challenging workouts." = "Your recovery is excellent! Perfect day for high-intensity training or challenging workouts.";
+"Your recovery is good. You can proceed with moderate to high intensity training." = "Your recovery is good. You can proceed with moderate to high intensity training.";
+"Your recovery is fair. Consider moderate intensity or focus on technique work." = "Your recovery is fair. Consider moderate intensity or focus on technique work.";
+"Your recovery is poor. Light exercise or active recovery recommended." = "Your recovery is poor. Light exercise or active recovery recommended.";
+"Your recovery is very poor. Rest day recommended. Focus on sleep and nutrition." = "Your recovery is very poor. Rest day recommended. Focus on sleep and nutrition.";
+"Consider stress management techniques like meditation or deep breathing" = "Consider stress management techniques like meditation or deep breathing";
+"Your resting heart rate is elevated. Ensure adequate hydration and rest" = "Your resting heart rate is elevated. Ensure adequate hydration and rest";
+"Aim for 7-9 hours of sleep per night" = "Aim for 7-9 hours of sleep per night";
+"Improve sleep quality: avoid screens before bed, keep room cool and dark" = "Improve sleep quality: avoid screens before bed, keep room cool and dark";
+
+/* Data Quality */
+"Data Quality" = "Data Quality";
+"Quality Breakdown" = "Quality Breakdown";
+"Tips for Better Quality" = "Tips for Better Quality";
+"Best time: 6-10 AM, right after waking up" = "Best time: 6-10 AM, right after waking up";
+"Value outside normal range (10-200ms)" = "Value outside normal range (10-200ms)";
+"Measured during sleep hours" = "Measured during sleep hours";
+"Not measured in optimal morning window (6-10 AM)" = "Not measured in optimal morning window (6-10 AM)";
+"Baseline Quality" = "Baseline Quality";
+"Samples" = "Samples";
+"Filtered" = "Filtered";
+"Highly reliable baseline" = "Highly reliable baseline";
+"Reliable baseline" = "Reliable baseline";
+"Need more data for reliable baseline" = "Need more data for reliable baseline";
+
+/* Recovery Score Detail */
+"Recovery Analysis" = "Recovery Analysis";
+"Multi-dimensional assessment" = "Multi-dimensional assessment";
+"Score Breakdown" = "Score Breakdown";
+"Resting Heart Rate" = "Resting Heart Rate";
+"Sleep Quality" = "Sleep Quality";
+"Training Load" = "Training Load";
+"Detailed Metrics" = "Detailed Metrics";
+"Current HRV" = "Current HRV";
+"Sleep Duration" = "Sleep Duration";
+"Deep Sleep" = "Deep Sleep";
+"Improvement Suggestions" = "Improvement Suggestions";
+"Recommendation" = "Recommendation";
+"Elevated" = "Elevated";
+"Optimal" = "Optimal";
+"Insufficient" = "Insufficient";
+"Light" = "Light";
+
+/* Measurement Reminders */
+"Time to Measure HRV" = "Time to Measure HRV";
+"Good morning! Measure your HRV now for the most accurate reading." = "Good morning! Measure your HRV now for the most accurate reading.";
+"Measurement Quality Tips" = "Measurement Quality Tips";
+"Your measurement quality was fair. For best results, measure between 6-10 AM right after waking up." = "Your measurement quality was fair. For best results, measure between 6-10 AM right after waking up.";
+"Your measurement quality was poor. Try measuring in the morning (6-10 AM) while sitting calmly." = "Your measurement quality was poor. Try measuring in the morning (6-10 AM) while sitting calmly.";
+"Achievement Unlocked!" = "Achievement Unlocked!";
+"You've measured your HRV for %d consecutive days! Keep up the great work!" = "You've measured your HRV for %d consecutive days! Keep up the great work!";
+"Optimal Measurement Window" = "Optimal Measurement Window";
+"You're in the optimal measurement window (6-10 AM). Measure now for the most accurate results!" = "You're in the optimal measurement window (6-10 AM). Measure now for the most accurate results!";

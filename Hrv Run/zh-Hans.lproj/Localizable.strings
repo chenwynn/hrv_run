@@ -1,0 +1,283 @@
+/* Main Screen */
+"Today's Recommendation" = "今日建议";
+"HRV Status" = "HRV 状态";
+"Current HRV" = "当前 HRV";
+"Baseline" = "基准值";
+"Recovery Score" = "恢复评分";
+"Trend" = "趋势";
+"Refresh" = "刷新";
+"Settings" = "设置";
+
+/* Status */
+"Rest recommended. Your body needs recovery." = "建议休息。你的身体需要恢复。";
+"Moderate exercise is suitable." = "适合进行中等强度的锻炼。";
+"Great condition! Good time for intense training." = "状态极佳！适合进行高强度训练。";
+
+/* Advice */
+"Your body needs rest today. Focus on recovery activities like light stretching or walking." = "今天你的身体需要休息。专注于恢复活动，如轻度拉伸或步行。";
+"Your recovery is excellent! This is a great day for high-intensity training or a challenging workout." = "你的恢复状况极佳！今天非常适合进行高强度训练或挑战性锻炼。";
+"Your recovery is good. You can proceed with moderate training as planned." = "你的恢复状况良好。可以按计划进行中等强度训练。";
+"Your recovery is below baseline. Consider light exercise or rest." = "你的恢复状况低于基准。考虑进行轻度锻炼或休息。";
+"Your HRV is trending upward, which is a positive sign." = "你的 HRV 呈上升趋势，这是一个积极的信号。";
+"Your HRV is trending downward. Be mindful of overtraining." = "你的 HRV 呈下降趋势。注意避免过度训练。";
+"Your HRV is stable." = "你的 HRV 保持稳定。";
+
+/* Recovery Advice */
+"Continue your current recovery practices. Your body is responding well." = "继续当前的恢复方法。你的身体反应良好。";
+"Maintain good sleep hygiene and stay hydrated. Consider adding a recovery day if needed." = "保持良好的睡眠习惯并补充水分。必要时考虑增加恢复日。";
+"Prioritize sleep (8+ hours), hydration, and nutrition. Avoid intense training until HRV improves." = "优先保证睡眠（8小时以上）、水分和营养。在 HRV 改善之前避免高强度训练。";
+
+/* Workout Intensity */
+"Very Light" = "非常轻松";
+"Light" = "轻松";
+"Moderate" = "中等";
+"High" = "高强度";
+"Recovery pace, can hold a conversation easily" = "恢复配速，可以轻松交谈";
+"Easy pace, comfortable breathing" = "轻松配速，呼吸舒适";
+"Steady pace, somewhat hard breathing" = "稳定配速，呼吸略急促";
+"Fast pace, hard breathing" = "快速配速，呼吸困难";
+
+/* Workout Types */
+"Recovery Run" = "恢复跑";
+"Walking" = "步行";
+"Easy Run" = "轻松跑";
+"Tempo Run" = "节奏跑";
+"Interval Training" = "间歇训练";
+"Long Run" = "长距离跑";
+
+/* Workout Effect */
+"Excellent" = "优秀";
+"Good" = "良好";
+"Moderate" = "中等";
+"Challenging" = "具有挑战性";
+
+/* Units */
+"min" = "分钟";
+"ms" = "毫秒";
+
+/* Main Dashboard */
+"Today's Recommendation" = "今日建议";
+"HRV Status" = "HRV 状态";
+"Current HRV" = "当前 HRV";
+"Baseline" = "基准值";
+"Recovery Score" = "恢复评分";
+"Intensity" = "强度";
+"Duration" = "时长";
+"Type" = "类型";
+"Direction" = "方向";
+
+/* Settings */
+"Settings" = "设置";
+"Appearance" = "外观";
+"Language" = "语言";
+"Theme" = "主题";
+"Follow System" = "跟随系统";
+"Light" = "浅色";
+"Dark" = "深色";
+"Customize language and theme settings." = "自定义语言和主题设置。";
+"Health Permissions" = "健康权限";
+"Request Authorization" = "请求授权";
+"Grant access to read HRV data and save workout information." = "授予读取HRV数据和保存锻炼信息的权限。";
+"Notifications" = "通知";
+"Enable Notifications" = "启用通知";
+"Notification Permission Granted" = "通知权限已授予";
+"Request Notification Permission" = "请求通知权限";
+"Receive notifications when your HRV data updates or after workouts with personalized recommendations." = "当你的HRV数据更新或锻炼后，接收个性化建议通知。";
+"HRV Data" = "HRV 数据";
+"Baseline Mean" = "基准平均值";
+"Sample Count" = "样本数量";
+"Baseline Reliable" = "基准可靠性";
+"Recalculate Baseline" = "重新计算基准值";
+"Your baseline is calculated from the last 30 days of HRV data." = "你的基准值根据最近30天的HRV数据计算。";
+"About" = "关于";
+"Version" = "版本";
+"Privacy Policy" = "隐私政策";
+"HRV Run analyzes your Heart Rate Variability to provide personalized running recommendations." = "HRV Run 通过分析你的心率变异性来提供个性化的跑步建议。";
+"All data is processed locally on your device." = "所有数据均在你的设备上本地处理。";
+"Done" = "完成";
+
+/* Errors */
+"Error" = "错误";
+"No Data" = "无数据";
+"Please authorize access to Health data to use this app." = "请授权访问健康数据以使用此应用。";
+"Not enough data to establish baseline. Wear your Apple Watch for at least 20 days." = "数据不足，无法建立基准值。请佩戴 Apple Watch 至少20天。";
+
+/* Authorization */
+"Welcome to HRV Run" = "欢迎使用 HRV Run";
+"This app analyzes your Heart Rate Variability (HRV) to provide personalized running recommendations." = "此应用通过分析你的心率变异性（HRV）来提供个性化的跑步建议。";
+"We need access to your Health data to:" = "我们需要访问你的健康数据以便：";
+"Read your HRV data" = "读取你的 HRV 数据";
+"Read your workout history" = "读取你的锻炼历史";
+"Save your workout data" = "保存你的锻炼数据";
+"Your data stays on your device and is never uploaded to any server." = "你的数据保留在设备上，绝不会上传到任何服务器。";
+"Grant Access" = "授予访问权限";
+
+/* Charts */
+"7-Day Trend" = "7天趋势";
+"30-Day Trend" = "30天趋势";
+"Low Zone" = "低区间";
+"Normal Zone" = "正常区间";
+"High Zone" = "高区间";
+
+/* Notifications */
+"Excellent Recovery!" = "恢复极佳！";
+"Good Recovery" = "恢复良好";
+"Moderate Recovery" = "恢复一般";
+"Low Recovery" = "恢复较差";
+"Rest Needed" = "需要休息";
+"Today's Training Recommendation" = "今日训练建议";
+"Great Workout!" = "训练效果极佳！";
+"Good Workout" = "训练效果良好";
+"Moderate Workout" = "训练效果一般";
+"Challenging Workout" = "训练强度较大";
+"Your HRV is recovering well. Excellent training session!" = "你的HRV恢复良好。这次训练效果极佳！";
+"Your HRV is recovering normally. Good job!" = "你的HRV恢复正常。训练不错！";
+"Your HRV dropped more than usual. Consider easier training tomorrow." = "你的HRV下降幅度较大。建议明天降低训练强度。";
+"Your HRV dropped significantly. Make sure to rest and recover properly." = "你的HRV显著下降。请确保充分休息和恢复。";
+
+/* Explanations */
+"What is this?" = "这是什么？";
+"Understanding the Ranges" = "理解数据范围";
+"Excellent" = "优秀";
+"Good" = "良好";
+"Needs Attention" = "需要注意";
+"Recommendations" = "建议";
+"Done" = "完成";
+
+/* Recovery Score Explanation */
+"Recovery Score Explanation" = "恢复评分说明";
+"Recovery Score Description" = "你的恢复评分(0-100)基于当前HRV与个人基准的对比，反映了身体对训练的准备程度。";
+"Excellent recovery. Your body is fully recovered and ready for high-intensity training." = "恢复极佳。身体已完全恢复，可以进行高强度训练。";
+"Good recovery. Suitable for moderate training as planned." = "恢复良好。适合按计划进行中等强度训练。";
+"Below optimal. Your body needs more rest. Consider light exercise or rest day." = "低于最佳状态。身体需要更多休息。考虑轻度锻炼或休息日。";
+"85-100: High-intensity training, intervals, tempo runs" = "85-100：高强度训练、间歇跑、节奏跑";
+"70-84: Moderate training, easy runs, steady pace" = "70-84：中等强度训练、轻松跑、稳定配速";
+"50-69: Light exercise, recovery runs, walking" = "50-69：轻度锻炼、恢复跑、步行";
+"0-49: Rest or very light activity recommended" = "0-49：建议休息或非常轻度的活动";
+
+/* HRV Status Explanation */
+"HRV Status Explanation" = "HRV状态说明";
+"HRV Status Description" = "HRV（心率变异性）测量心跳之间的时间变化。数值越高通常表示恢复越好，准备度越高。";
+"Above Baseline + 1SD" = "高于基准+1个标准差";
+"High Zone: Excellent recovery, body is well-rested and ready for intense training." = "高区间：恢复极佳，身体休息充分，可进行高强度训练。";
+"Baseline ± 1SD" = "基准±1个标准差";
+"Normal Zone: Good recovery, suitable for regular training." = "正常区间：恢复良好，适合常规训练。";
+"Below Baseline - 1SD" = "低于基准-1个标准差";
+"Low Zone: Body needs rest, avoid high-intensity training." = "低区间：身体需要休息，避免高强度训练。";
+"High Zone: Great time for challenging workouts, PRs, hard sessions" = "高区间：挑战性训练、刷新个人最好成绩、高强度课程的好时机";
+"Normal Zone: Proceed with planned training, maintain consistency" = "正常区间：按计划训练，保持一致性";
+"Low Zone: Focus on recovery, sleep 8+ hours, stay hydrated" = "低区间：专注恢复，睡眠8小时以上，保持水分";
+
+/* Trend Explanation */
+"Trend Explanation" = "趋势说明";
+"Trend Description" = "你的HRV趋势显示了恢复状况随时间的变化，有助于识别进步或累积疲劳的模式。";
+"Improving (↑)" = "上升 (↑)";
+"Your HRV is trending upward, indicating improving recovery and adaptation to training." = "你的HRV呈上升趋势，表明恢复改善，对训练适应良好。";
+"Stable (→)" = "稳定 (→)";
+"Your HRV is stable, indicating consistent recovery status." = "你的HRV保持稳定，表明恢复状态一致。";
+"Declining (↓)" = "下降 (↓)";
+"Your HRV is trending downward, may indicate accumulated fatigue or overtraining." = "你的HRV呈下降趋势，可能表明累积疲劳或过度训练。";
+"Improving: Good sign! You can maintain or slightly increase training load" = "上升：好兆头！可以保持或略微增加训练量";
+"Stable: Maintain current training and recovery balance" = "稳定：保持当前训练和恢复的平衡";
+"Declining: Warning sign! Add rest days, reduce intensity, focus on recovery" = "下降：警告信号！增加休息日，降低强度，专注恢复";
+"Monitor for 3-5 days before making major training changes" = "观察3-5天后再做重大训练调整";
+
+/* Chart Explanation */
+"HRV Chart Explanation" = "HRV图表说明";
+"HRV Chart Description" = "此图表显示了过去7天的HRV测量值，并与你的个人基准和阈值进行对比。";
+"Above Green Line" = "绿线以上";
+"Data points above the high threshold indicate excellent recovery days." = "高于高阈值的数据点表示恢复极佳的日子。";
+"Between Green and Red Lines" = "绿线与红线之间";
+"Data points in normal range indicate typical recovery status." = "正常范围内的数据点表示典型的恢复状态。";
+"Below Red Line" = "红线以下";
+"Data points below low threshold indicate need for recovery." = "低于低阈值的数据点表示需要恢复。";
+"Blue Dashed Line: Your personal baseline (average)" = "蓝色虚线：你的个人基准（平均值）";
+"Green Dashed Line: High threshold (baseline + 1SD)" = "绿色虚线：高阈值（基准+1个标准差）";
+"Red Dashed Line: Low threshold (baseline - 1SD)" = "红色虚线：低阈值（基准-1个标准差）";
+"Purple Line: Your actual HRV measurements over time" = "紫色实线：你的实际HRV测量值";
+"Look for patterns: consistent highs, lows, or fluctuations" = "寻找模式：持续的高点、低点或波动";
+
+
+/* Calendar Heatmap */
+"HRV Calendar" = "HRV 日历";
+"Last 30 Days" = "最近30天";
+"Low" = "低";
+"Normal" = "正常";
+"High" = "高";
+"vs Baseline" = "对比基准";
+"Below your baseline - Consider rest or light activity" = "低于基准 - 建议休息或轻度活动";
+"Above your baseline - Good day for training" = "高于基准 - 适合训练的好日子";
+"Within normal range - Moderate training suitable" = "正常范围内 - 适合中等强度训练";
+"30-Day Summary" = "30天统计";
+"Average" = "平均值";
+"Highest" = "最高值";
+"Lowest" = "最低值";
+"Stability" = "稳定性";
+
+/* Data Quality */
+"Poor" = "差";
+"Fair" = "一般";
+"Very Stable" = "非常稳定";
+"Stable" = "稳定";
+"Variable" = "波动";
+
+/* Recovery Level */
+"Very Poor" = "很差";
+
+/* Multi-Dimensional Recovery */
+"RHR" = "静息心率";
+"Sleep" = "睡眠";
+"Load" = "负荷";
+"Your recovery is excellent! Perfect day for high-intensity training or challenging workouts." = "你的恢复状况极佳！非常适合高强度训练或挑战性锻炼。";
+"Your recovery is good. You can proceed with moderate to high intensity training." = "你的恢复状况良好。可以进行中高强度训练。";
+"Your recovery is fair. Consider moderate intensity or focus on technique work." = "你的恢复状况一般。考虑中等强度或专注技术训练。";
+"Your recovery is poor. Light exercise or active recovery recommended." = "你的恢复状况较差。建议轻度锻炼或主动恢复。";
+"Your recovery is very poor. Rest day recommended. Focus on sleep and nutrition." = "你的恢复状况很差。建议休息日。专注睡眠和营养。";
+"Consider stress management techniques like meditation or deep breathing" = "考虑压力管理技巧，如冥想或深呼吸";
+"Your resting heart rate is elevated. Ensure adequate hydration and rest" = "你的静息心率偏高。确保充足的水分和休息";
+"Aim for 7-9 hours of sleep per night" = "目标每晚7-9小时睡眠";
+"Improve sleep quality: avoid screens before bed, keep room cool and dark" = "改善睡眠质量：睡前避免屏幕，保持房间凉爽黑暗";
+
+/* Data Quality */
+"Data Quality" = "数据质量";
+"Quality Breakdown" = "质量分布";
+"Tips for Better Quality" = "提升质量的建议";
+"Best time: 6-10 AM, right after waking up" = "最佳时间：早上6-10点，刚醒来时";
+"Value outside normal range (10-200ms)" = "数值超出正常范围 (10-200ms)";
+"Measured during sleep hours" = "在睡眠时间测量";
+"Not measured in optimal morning window (6-10 AM)" = "未在最佳早晨时段测量 (6-10点)";
+"Baseline Quality" = "基准质量";
+"Samples" = "样本数";
+"Filtered" = "已过滤";
+"Highly reliable baseline" = "高度可靠的基准";
+"Reliable baseline" = "可靠的基准";
+"Need more data for reliable baseline" = "需要更多数据以建立可靠基准";
+
+/* Recovery Score Detail */
+"Recovery Analysis" = "恢复分析";
+"Multi-dimensional assessment" = "多维度评估";
+"Score Breakdown" = "评分详情";
+"Resting Heart Rate" = "静息心率";
+"Sleep Quality" = "睡眠质量";
+"Training Load" = "训练负荷";
+"Detailed Metrics" = "详细指标";
+"Current HRV" = "当前HRV";
+"Sleep Duration" = "睡眠时长";
+"Deep Sleep" = "深度睡眠";
+"Improvement Suggestions" = "改善建议";
+"Recommendation" = "训练建议";
+"Elevated" = "偏高";
+"Optimal" = "最佳";
+"Insufficient" = "不足";
+"Light" = "轻度";
+
+/* Measurement Reminders */
+"Time to Measure HRV" = "该测量HRV了";
+"Good morning! Measure your HRV now for the most accurate reading." = "早上好！现在测量HRV可以获得最准确的读数。";
+"Measurement Quality Tips" = "测量质量建议";
+"Your measurement quality was fair. For best results, measure between 6-10 AM right after waking up." = "你的测量质量一般。为获得最佳结果，请在早上6-10点刚醒来时测量。";
+"Your measurement quality was poor. Try measuring in the morning (6-10 AM) while sitting calmly." = "你的测量质量较差。尝试在早上（6-10点）安静坐着时测量。";
+"Achievement Unlocked!" = "成就解锁！";
+"You've measured your HRV for %d consecutive days! Keep up the great work!" = "你已连续测量HRV %d天！继续保持！";
+"Optimal Measurement Window" = "最佳测量窗口";
+"You're in the optimal measurement window (6-10 AM). Measure now for the most accurate results!" = "你正处于最佳测量窗口（6-10点）。现在测量可获得最准确的结果！";

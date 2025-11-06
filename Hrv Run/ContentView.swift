@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel = HRVViewModel()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        Group {
+            if viewModel.needsAuthorization {
+                AuthorizationView(viewModel: viewModel)
+            } else {
+                MainDashboardView(viewModel: viewModel)
+            }
         }
-        .padding()
     }
 }
 

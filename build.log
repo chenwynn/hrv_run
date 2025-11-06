@@ -1,0 +1,123 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -scheme "Hrv Run" -sdk iphonesimulator -configuration Debug clean build
+
+Build settings from command line:
+    SDKROOT = iphonesimulator18.4
+
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS Simulator, id:dvtdevice-DVTiOSDeviceSimulatorPlaceholder-iphonesimulator:placeholder, name:Any iOS Simulator Device }
+{ platform:iOS Simulator, arch:arm64, id:3131D8C3-F9D9-4EFE-B542-5AA043F3ED5D, OS:18.4, name:iPad (A16) }
+{ platform:iOS Simulator, arch:x86_64, id:3131D8C3-F9D9-4EFE-B542-5AA043F3ED5D, OS:18.4, name:iPad (A16) }
+{ platform:iOS Simulator, arch:arm64, id:6A9FC5FC-339A-44F4-9C24-A5D43E8B1FE9, OS:18.4, name:iPad Air 11-inch (M3) }
+{ platform:iOS Simulator, arch:x86_64, id:6A9FC5FC-339A-44F4-9C24-A5D43E8B1FE9, OS:18.4, name:iPad Air 11-inch (M3) }
+{ platform:iOS Simulator, arch:arm64, id:EDF5E8D1-C1E2-423F-9BE8-EC84152EED4E, OS:18.4, name:iPad Air 13-inch (M3) }
+{ platform:iOS Simulator, arch:x86_64, id:EDF5E8D1-C1E2-423F-9BE8-EC84152EED4E, OS:18.4, name:iPad Air 13-inch (M3) }
+{ platform:iOS Simulator, arch:arm64, id:F94922F2-A6A9-4401-AD78-852CACBD6BED, OS:18.4, name:iPad Pro 11-inch (M4) }
+{ platform:iOS Simulator, arch:x86_64, id:F94922F2-A6A9-4401-AD78-852CACBD6BED, OS:18.4, name:iPad Pro 11-inch (M4) }
+{ platform:iOS Simulator, arch:arm64, id:F8DF2F2D-14EB-4AA5-BFD3-36C28D2EE066, OS:18.4, name:iPad Pro 13-inch (M4) }
+{ platform:iOS Simulator, arch:x86_64, id:F8DF2F2D-14EB-4AA5-BFD3-36C28D2EE066, OS:18.4, name:iPad Pro 13-inch (M4) }
+{ platform:iOS Simulator, arch:arm64, id:81844529-83E5-4A4B-A2C0-2C7660C970B3, OS:18.4, name:iPad mini (A17 Pro) }
+{ platform:iOS Simulator, arch:x86_64, id:81844529-83E5-4A4B-A2C0-2C7660C970B3, OS:18.4, name:iPad mini (A17 Pro) }
+{ platform:iOS Simulator, arch:arm64, id:05D16A64-8F1E-4BAC-8BAB-CF310E3B8E7A, OS:18.4, name:iPhone 16 }
+{ platform:iOS Simulator, arch:x86_64, id:05D16A64-8F1E-4BAC-8BAB-CF310E3B8E7A, OS:18.4, name:iPhone 16 }
+{ platform:iOS Simulator, arch:arm64, id:15C2B702-FEA0-4925-94DE-13E68E3A30DC, OS:18.4, name:iPhone 16 Plus }
+{ platform:iOS Simulator, arch:x86_64, id:15C2B702-FEA0-4925-94DE-13E68E3A30DC, OS:18.4, name:iPhone 16 Plus }
+{ platform:iOS Simulator, arch:arm64, id:BD30FBEE-6020-4294-B111-498597B0BAF6, OS:18.4, name:iPhone 16 Pro }
+{ platform:iOS Simulator, arch:x86_64, id:BD30FBEE-6020-4294-B111-498597B0BAF6, OS:18.4, name:iPhone 16 Pro }
+{ platform:iOS Simulator, arch:arm64, id:1FED89FD-008E-4583-9D50-AEFF83360C27, OS:18.4, name:iPhone 16 Pro Max }
+{ platform:iOS Simulator, arch:x86_64, id:1FED89FD-008E-4583-9D50-AEFF83360C27, OS:18.4, name:iPhone 16 Pro Max }
+{ platform:iOS Simulator, arch:arm64, id:1F3373DF-2A34-48C5-8A1D-31D8531187AA, OS:18.4, name:iPhone 16e }
+{ platform:iOS Simulator, arch:x86_64, id:1F3373DF-2A34-48C5-8A1D-31D8531187AA, OS:18.4, name:iPhone 16e }
+{ platform:macOS, arch:arm64, variant:Designed for [iPad,iPhone], id:00008132-000660E42E38801C, name:My Mac }
+{ platform:iOS, id:dvtdevice-DVTiPhonePlaceholder-iphoneos:placeholder, name:Any iOS Device }
+{ platform:iOS, arch:arm64, id:00008120-000958161E10201E, name:“陈吟书”的 iPhone }
+ComputePackagePrebuildTargetDependencyGraph
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+** CLEAN SUCCEEDED **
+
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS Simulator, id:dvtdevice-DVTiOSDeviceSimulatorPlaceholder-iphonesimulator:placeholder, name:Any iOS Simulator Device }
+{ platform:iOS Simulator, arch:arm64, id:3131D8C3-F9D9-4EFE-B542-5AA043F3ED5D, OS:18.4, name:iPad (A16) }
+{ platform:iOS Simulator, arch:x86_64, id:3131D8C3-F9D9-4EFE-B542-5AA043F3ED5D, OS:18.4, name:iPad (A16) }
+{ platform:iOS Simulator, arch:arm64, id:6A9FC5FC-339A-44F4-9C24-A5D43E8B1FE9, OS:18.4, name:iPad Air 11-inch (M3) }
+{ platform:iOS Simulator, arch:x86_64, id:6A9FC5FC-339A-44F4-9C24-A5D43E8B1FE9, OS:18.4, name:iPad Air 11-inch (M3) }
+{ platform:iOS Simulator, arch:arm64, id:EDF5E8D1-C1E2-423F-9BE8-EC84152EED4E, OS:18.4, name:iPad Air 13-inch (M3) }
+{ platform:iOS Simulator, arch:x86_64, id:EDF5E8D1-C1E2-423F-9BE8-EC84152EED4E, OS:18.4, name:iPad Air 13-inch (M3) }
+{ platform:iOS Simulator, arch:arm64, id:F94922F2-A6A9-4401-AD78-852CACBD6BED, OS:18.4, name:iPad Pro 11-inch (M4) }
+{ platform:iOS Simulator, arch:x86_64, id:F94922F2-A6A9-4401-AD78-852CACBD6BED, OS:18.4, name:iPad Pro 11-inch (M4) }
+{ platform:iOS Simulator, arch:arm64, id:F8DF2F2D-14EB-4AA5-BFD3-36C28D2EE066, OS:18.4, name:iPad Pro 13-inch (M4) }
+{ platform:iOS Simulator, arch:x86_64, id:F8DF2F2D-14EB-4AA5-BFD3-36C28D2EE066, OS:18.4, name:iPad Pro 13-inch (M4) }
+{ platform:iOS Simulator, arch:arm64, id:81844529-83E5-4A4B-A2C0-2C7660C970B3, OS:18.4, name:iPad mini (A17 Pro) }
+{ platform:iOS Simulator, arch:x86_64, id:81844529-83E5-4A4B-A2C0-2C7660C970B3, OS:18.4, name:iPad mini (A17 Pro) }
+{ platform:iOS Simulator, arch:arm64, id:05D16A64-8F1E-4BAC-8BAB-CF310E3B8E7A, OS:18.4, name:iPhone 16 }
+{ platform:iOS Simulator, arch:x86_64, id:05D16A64-8F1E-4BAC-8BAB-CF310E3B8E7A, OS:18.4, name:iPhone 16 }
+{ platform:iOS Simulator, arch:arm64, id:15C2B702-FEA0-4925-94DE-13E68E3A30DC, OS:18.4, name:iPhone 16 Plus }
+{ platform:iOS Simulator, arch:x86_64, id:15C2B702-FEA0-4925-94DE-13E68E3A30DC, OS:18.4, name:iPhone 16 Plus }
+{ platform:iOS Simulator, arch:arm64, id:BD30FBEE-6020-4294-B111-498597B0BAF6, OS:18.4, name:iPhone 16 Pro }
+{ platform:iOS Simulator, arch:x86_64, id:BD30FBEE-6020-4294-B111-498597B0BAF6, OS:18.4, name:iPhone 16 Pro }
+{ platform:iOS Simulator, arch:arm64, id:1FED89FD-008E-4583-9D50-AEFF83360C27, OS:18.4, name:iPhone 16 Pro Max }
+{ platform:iOS Simulator, arch:x86_64, id:1FED89FD-008E-4583-9D50-AEFF83360C27, OS:18.4, name:iPhone 16 Pro Max }
+{ platform:iOS Simulator, arch:arm64, id:1F3373DF-2A34-48C5-8A1D-31D8531187AA, OS:18.4, name:iPhone 16e }
+{ platform:iOS Simulator, arch:x86_64, id:1F3373DF-2A34-48C5-8A1D-31D8531187AA, OS:18.4, name:iPhone 16e }
+{ platform:macOS, arch:arm64, variant:Designed for [iPad,iPhone], id:00008132-000660E42E38801C, name:My Mac }
+{ platform:iOS, id:dvtdevice-DVTiPhonePlaceholder-iphoneos:placeholder, name:Any iOS Device }
+{ platform:iOS, arch:arm64, id:00008120-000958161E10201E, name:“陈吟书”的 iPhone }
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (1 target)
+    Target 'Hrv Run' in project 'Hrv Run' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.4.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 /Library/WebServer/Documents/hrv/Hrv Run/Hrv Run/Assets.xcassets
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: 7c4cc1a003739aad5979790910c851b3
+Build description path: /Users/wynn/Library/Developer/Xcode/DerivedData/Hrv_Run-anlvmbmheoamrbbwhughgyibfnan/Build/Intermediates.noindex/XCBuildData/7c4cc1a003739aad5979790910c851b3.xcbuilddata
+error: Multiple commands produce '/Users/wynn/Library/Developer/Xcode/DerivedData/Hrv_Run-anlvmbmheoamrbbwhughgyibfnan/Build/Products/Debug-iphonesimulator/Hrv Run.app/Info.plist'
+    note: Target 'Hrv Run' (project 'Hrv Run') has copy command from '/Library/WebServer/Documents/hrv/Hrv Run/Hrv Run/Info.plist' to '/Users/wynn/Library/Developer/Xcode/DerivedData/Hrv_Run-anlvmbmheoamrbbwhughgyibfnan/Build/Products/Debug-iphonesimulator/Hrv Run.app/Info.plist'
+    note: Target 'Hrv Run' (project 'Hrv Run') has process command with output '/Users/wynn/Library/Developer/Xcode/DerivedData/Hrv_Run-anlvmbmheoamrbbwhughgyibfnan/Build/Products/Debug-iphonesimulator/Hrv Run.app/Info.plist'
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.4.sdk /Users/wynn/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.4-22E235-71825a6d136aa4733edcbe86ece5525b.sdkstatcache
+    cd /Library/WebServer/Documents/hrv/Hrv\ Run/Hrv\ Run.xcodeproj
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.4.sdk -o /Users/wynn/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.4-22E235-71825a6d136aa4733edcbe86ece5525b.sdkstatcache
+
+CreateBuildDirectory /Users/wynn/Library/Developer/Xcode/DerivedData/Hrv_Run-anlvmbmheoamrbbwhughgyibfnan/Build/Products
+    cd /Library/WebServer/Documents/hrv/Hrv\ Run/Hrv\ Run.xcodeproj
+    builtin-create-build-directory /Users/wynn/Library/Developer/Xcode/DerivedData/Hrv_Run-anlvmbmheoamrbbwhughgyibfnan/Build/Products
+
+CreateBuildDirectory /Users/wynn/Library/Developer/Xcode/DerivedData/Hrv_Run-anlvmbmheoamrbbwhughgyibfnan/Build/Intermediates.noindex
+    cd /Library/WebServer/Documents/hrv/Hrv\ Run/Hrv\ Run.xcodeproj
+    builtin-create-build-directory /Users/wynn/Library/Developer/Xcode/DerivedData/Hrv_Run-anlvmbmheoamrbbwhughgyibfnan/Build/Intermediates.noindex
+
+warning: duplicate output file '/Users/wynn/Library/Developer/Xcode/DerivedData/Hrv_Run-anlvmbmheoamrbbwhughgyibfnan/Build/Products/Debug-iphonesimulator/Hrv Run.app/Info.plist' on task: ProcessInfoPlistFile /Users/wynn/Library/Developer/Xcode/DerivedData/Hrv_Run-anlvmbmheoamrbbwhughgyibfnan/Build/Products/Debug-iphonesimulator/Hrv Run.app/Info.plist /Users/wynn/Library/Developer/Xcode/DerivedData/Hrv_Run-anlvmbmheoamrbbwhughgyibfnan/Build/Intermediates.noindex/Hrv Run.build/Debug-iphonesimulator/Hrv Run.build/empty-Hrv Run.plist (in target 'Hrv Run' from project 'Hrv Run')
+** BUILD FAILED **
+
+
+The following build commands failed:
+	Building project Hrv Run with scheme Hrv Run and configuration Debug
+(1 failure)
