@@ -283,20 +283,8 @@
 "You're in the optimal measurement window (6-10 AM). Measure now for the most accurate results!" = "你正处于最佳测量窗口（6-10点）。现在测量可获得最准确的结果！";
 
 /* Simplified Main View */
-"Is today suitable for running?" = "今天适合跑步么？";
-"When to run?" = "什么时段跑？";
-"What to run?" = "跑什么？";
-"How was the run?" = "跑得如何？";
-"Measure HRV after training to see results" = "训练后测量HRV查看效果";
-"View Detailed Data and Trends" = "查看详细数据和趋势";
-"Detailed Data" = "详细数据";
-"Done" = "完成";
-"No HRV Data" = "暂无HRV数据";
-"Use Apple Watch to measure HRV or start with Breathe app" = "使用Apple Watch测量HRV或使用呼吸应用开始";
-"No data available" = "暂无数据";
-"Perfect! Excellent condition" = "非常适合！状态极佳";
-"Good to go" = "适合，状态良好";
-"Okay, but control intensity" = "可以，但要控制强度";
-"Not recommended, rest today" = "不适合，建议休息";
-"Optimal window" = "状态最佳时段";
-"Running" = "跑步";
+"查看详细数据和趋势" = "查看详细数据和趋势";
+"详细数据" = "详细数据";
+"完成" = "完成";
+"暂无HRV数据" = "暂无HRV数据";
+"使用Apple Watch测量HRV\n或使用"呼吸"应用开始" = "使用Apple Watch测量HRV\n或使用"呼吸"应用开始";

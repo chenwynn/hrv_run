@@ -281,3 +281,10 @@
 "You've measured your HRV for %d consecutive days! Keep up the great work!" = "You've measured your HRV for %d consecutive days! Keep up the great work!";
 "Optimal Measurement Window" = "Optimal Measurement Window";
 "You're in the optimal measurement window (6-10 AM). Measure now for the most accurate results!" = "You're in the optimal measurement window (6-10 AM). Measure now for the most accurate results!";
+
+/* Simplified Main View */
+"View Detailed Data and Trends" = "View Detailed Data and Trends";
+"Detailed Data" = "Detailed Data";
+"Done" = "Done";
+"No HRV Data" = "No HRV Data";
+"Use Apple Watch to measure HRV or start with Breathe app" = "Use Apple Watch to measure HRV or start with Breathe app";

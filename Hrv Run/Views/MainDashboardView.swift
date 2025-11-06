@@ -505,27 +505,7 @@ struct DetailRow: View {
 }
 
 // MARK: - Empty State
-
-struct EmptyStateView: View {
-    var body: some View {
-        VStack(spacing: 20) {
-            Image(systemName: "chart.line.uptrend.xyaxis")
-                .font(.system(size: 60))
-                .foregroundStyle(.secondary)
-            
-            Text(LocalizedStringKey("No Data"))
-                .font(.title2)
-                .fontWeight(.semibold)
-            
-            Text(LocalizedStringKey("Not enough data to establish baseline. Wear your Apple Watch for at least 20 days."))
-                .font(.body)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
-        }
-        .padding()
-    }
-}
+// EmptyStateView is now defined in SimplifiedMainDashboardView.swift
 
 #Preview {
     MainDashboardView(viewModel: HRVViewModel())

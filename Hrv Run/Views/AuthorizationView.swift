@@ -15,9 +15,18 @@ struct AuthorizationView: View {
             Spacer()
             
             // App Icon
-            Image(systemName: "heart.text.square.fill")
-                .font(.system(size: 80))
-                .foregroundStyle(.red.gradient)
+            if let appIcon = UIImage(named: "AppIcon") {
+                Image(uiImage: appIcon)
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                    .clipShape(RoundedRectangle(cornerRadius: 22))
+                    .shadow(radius: 10)
+            } else {
+                // Fallback icon
+                Image(systemName: "heart.text.square.fill")
+                    .font(.system(size: 80))
+                    .foregroundStyle(Color.accentColor.gradient)
+            }
             
             // Title
             Text("Welcome to HRV Run")
