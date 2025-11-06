@@ -10,8 +10,12 @@ import SwiftUI
 
 struct SimplifiedMainDashboardView: View {
     @ObservedObject var viewModel: HRVViewModel
+    @StateObject private var appSettings = AppSettings.shared
     @State private var showSettings = false
     @State private var showDetailedData = false
+    @State private var showWorkoutsList = false
+    @State private var showEvaluationSheet = false
+    @State private var evaluationData: (WorkoutSummary, Double, Double?)?
     
     var body: some View {
         NavigationStack {
@@ -32,6 +36,7 @@ struct SimplifiedMainDashboardView: View {
                 }
                 .padding()
             }
+            .id(appSettings.selectedLanguage)
             .navigationTitle("HRV Run \(statusEmoji)")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
@@ -60,6 +65,45 @@ struct SimplifiedMainDashboardView: View {
             .sheet(isPresented: $showDetailedData) {
                 DetailedDataView(viewModel: viewModel)
             }
+            .sheet(isPresented: $showWorkoutsList) {
+                WorkoutSelectionSheet(
+                    viewModel: viewModel,
+                    onWorkoutSelected: { workout in
+                        // 先关闭列表
+                        showWorkoutsList = false
+                        
+                        // 异步加载数据并打开评估界面
+                        Task {
+                            let hrvData = await viewModel.getPostWorkoutHRVData(for: workout)
+                            switch hrvData {
+                            case .hasData(let pre, let post, _):
+                                evaluationData = (workout, pre, post)
+                            case .needPostMeasurement(_, let preHRV):
+                                evaluationData = (workout, preHRV, nil)
+                            default:
+                                evaluationData = nil
+                            }
+                            
+                            // 数据准备好后才打开
+                            if evaluationData != nil {
+                                // 延迟一下确保前一个sheet完全关闭
+                                try? await Task.sleep(nanoseconds: 300_000_000) // 0.3秒
+                                showEvaluationSheet = true
+                            }
+                        }
+                    }
+                )
+            }
+            .sheet(isPresented: $showEvaluationSheet) {
+                if let data = evaluationData {
+                    PostWorkoutEvaluationView(
+                        viewModel: viewModel,
+                        workout: data.0,
+                        preWorkoutHRV: data.1,
+                        postWorkoutHRV: data.2
+                    )
+                }
+            }
             .refreshable {
                 await viewModel.refresh()
             }
@@ -77,20 +121,18 @@ struct SimplifiedMainDashboardView: View {
         VStack(spacing: 16) {
             // Question 1: Is today suitable for running?
             QuestionCard(
-                number: "1",
-                question: "Is today suitable for running?",
+                question: "Is today suitable for running?".localized(),
                 answer: todaySuitability,
-                emoji: suitabilityEmoji,
+                icon: "checkmark.circle.fill",
                 color: suitabilityColor
             )
             
             // Question 2: When to run?
             if let window = viewModel.optimalWindow {
                 QuestionCard(
-                    number: "2",
-                    question: "When to run?",
+                    question: "When to run?".localized(),
                     answer: formatTimeWindow(window),
-                    emoji: "⏰",
+                    icon: "clock.fill",
                     color: .blue
                 )
             }
@@ -98,22 +140,19 @@ struct SimplifiedMainDashboardView: View {
             // Question 3: What to run?
             if let recommendation = viewModel.recommendation {
                 QuestionCard(
-                    number: "3",
-                    question: "What to run?",
+                    question: "What to run?".localized(),
                     answer: workoutPlan(recommendation),
-                    emoji: "🏃‍♂️",
+                    icon: "figure.run",
                     color: .green
                 )
             }
             
             // Question 4: How was the run?
-            QuestionCard(
-                number: "4",
-                question: "How was the run?",
-                answer: "Measure HRV after training to see results",
-                emoji: "📊",
-                color: .purple,
-                isPlaceholder: true
+            Question4Card(
+                viewModel: viewModel,
+                onEvaluateTap: {
+                    showWorkoutsList = true
+                }
             )
         }
     }
@@ -126,7 +165,7 @@ struct SimplifiedMainDashboardView: View {
         } label: {
             HStack {
                 Image(systemName: "chart.xyaxis.line")
-                Text("View Detailed Data and Trends")
+                Text(LocalizedStringKey("View Detailed Data and Trends"))
                     .fontWeight(.medium)
                 Spacer()
                 Image(systemName: "chevron.right")
@@ -158,19 +197,19 @@ struct SimplifiedMainDashboardView: View {
     
     private var todaySuitability: String {
         guard let recommendation = viewModel.recommendation else {
-            return "No data available"
+            return "No data available".localized()
         }
         
         if recommendation.shouldWorkout {
             if recommendation.suitabilityScore >= 85 {
-                return "Perfect! Excellent condition"
+                return "Perfect! Excellent condition".localized()
             } else if recommendation.suitabilityScore >= 70 {
-                return "Good to go"
+                return "Good to go".localized()
             } else {
-                return "Okay, but control intensity"
+                return "Okay, but control intensity".localized()
             }
         } else {
-            return "Not recommended, rest today"
+            return "Not recommended, rest today".localized()
         }
     }
     
@@ -213,48 +252,112 @@ struct SimplifiedMainDashboardView: View {
         let startTime = formatter.string(from: window.timeRange.start)
         let endTime = formatter.string(from: window.timeRange.end)
         
-        return "\(startTime) - \(endTime)\nOptimal window"
+        let optimalWindow = "Optimal window".localized()
+        return "\(startTime) - \(endTime)\n\(optimalWindow)"
     }
     
     private func workoutPlan(_ recommendation: WorkoutRecommendation) -> String {
         let intensity = recommendation.intensity.localizedString
         let duration = recommendation.formattedDuration
-        let type = recommendation.workoutType.first?.localizedString ?? "Running"
+        let type = recommendation.workoutType.first?.localizedString ?? "Running".localized()
         
         return "\(type)\n\(intensity) · \(duration)"
+    }
+}
+
+// MARK: - Question 4 Card
+
+struct Question4Card: View {
+    @ObservedObject var viewModel: HRVViewModel
+    let onEvaluateTap: () -> Void
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            // Question Header
+            HStack(spacing: 8) {
+                Image(systemName: "chart.bar.fill")
+                    .font(.headline)
+                    .foregroundColor(.purple)
+                
+                Text("How was the run?".localized())
+                    .font(.headline)
+                    .foregroundColor(.primary)
+                
+                Spacer()
+            }
+            
+            // Answer or Evaluation Result
+            if let evaluationText = viewModel.getLatestWorkoutEvaluation() {
+                // 显示评估结果
+                Text(evaluationText)
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.purple)
+                    .multilineTextAlignment(.leading)
+            } else if !viewModel.recentWorkouts.isEmpty {
+                // 有训练但未评估
+                Text("Tap to evaluate your training".localized())
+                    .font(.body)
+                    .foregroundColor(.secondary)
+            } else {
+                // 没有训练
+                Text("Complete a workout to evaluate".localized())
+                    .font(.body)
+                    .foregroundColor(.secondary)
+            }
+            
+            // 评估按钮
+            if !viewModel.recentWorkouts.isEmpty {
+                Button {
+                    onEvaluateTap()
+                } label: {
+                    HStack {
+                        Image(systemName: "star.fill")
+                        Text("Evaluate Training".localized())
+                            .fontWeight(.medium)
+                    }
+                    .font(.subheadline)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 10)
+                    .background(Color.purple)
+                    .cornerRadius(8)
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color(.systemBackground))
+                .shadow(color: .black.opacity(0.05), radius: 10, y: 5)
+        )
     }
 }
 
 // MARK: - Question Card
 
 struct QuestionCard: View {
-    let number: String
     let question: String
     let answer: String
-    let emoji: String
+    let icon: String
     let color: Color
     var isPlaceholder: Bool = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            // Question Header
+            // Question Header with Icon
             HStack(spacing: 8) {
-                Text(number)
-                    .font(.caption)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .frame(width: 24, height: 24)
-                    .background(color)
-                    .clipShape(Circle())
+                Image(systemName: icon)
+                    .font(.headline)
+                    .foregroundColor(color)
                 
                 Text(question)
                     .font(.headline)
                     .foregroundColor(.primary)
                 
                 Spacer()
-                
-                Text(emoji)
-                    .font(.title2)
             }
             
             // Answer
@@ -268,11 +371,8 @@ struct QuestionCard: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(
             RoundedRectangle(cornerRadius: 16)
-                .fill(color.opacity(0.1))
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(color.opacity(0.3), lineWidth: 1)
+                .fill(Color(.systemBackground))
+                .shadow(color: .black.opacity(0.05), radius: 10, y: 5)
         )
     }
 }
@@ -332,11 +432,11 @@ struct DetailedDataView: View {
                 }
                 .padding()
             }
-            .navigationTitle("Detailed Data")
+            .navigationTitle(LocalizedStringKey("Detailed Data"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Done") {
+                    Button(LocalizedStringKey("Done")) {
                         dismiss()
                     }
                 }
@@ -354,11 +454,11 @@ struct EmptyStateView: View {
                 .font(.system(size: 60))
                 .foregroundStyle(.secondary)
             
-            Text("No HRV Data")
+            Text(LocalizedStringKey("No HRV Data"))
                 .font(.title2)
                 .fontWeight(.semibold)
             
-            Text("Use Apple Watch to measure HRV or start with Breathe app")
+            Text(LocalizedStringKey("Use Apple Watch to measure HRV or start with Breathe app"))
                 .font(.body)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)

@@ -28,6 +28,11 @@ class HRVViewModel: ObservableObject {
     @Published var optimalWindow: WorkoutWindow?
     @Published var recommendation: WorkoutRecommendation?
     
+    // Workout相关
+    @Published var recentWorkouts: [WorkoutSummary] = []
+    @Published var selectedWorkoutForEvaluation: WorkoutSummary?
+    @Published var savedEvaluations: [PostWorkoutEvaluation] = []
+    
     // MARK: - Dependencies
     
     private let healthKitManager = HealthKitManager.shared
@@ -109,7 +114,13 @@ class HRVViewModel: ObservableObject {
                 )
             }
             
-            // 7. 生成建议
+            // 7. 加载最近的训练记录
+            await loadRecentWorkouts()
+            
+            // 8. 加载保存的评估
+            loadSavedEvaluations()
+            
+            // 9. 生成建议
             if let status = currentStatus,
                let trend = trend {
                 recommendation = recommendationEngine.generateRecommendation(
@@ -171,6 +182,96 @@ class HRVViewModel: ObservableObject {
     
     func formatScore(_ score: Double) -> String {
         return String(format: "%.0f", score)
+    }
+    
+    // MARK: - Workout Methods
+    
+    /// 加载最近的训练记录（今天的所有训练）
+    func loadRecentWorkouts() async {
+        do {
+            // 获取今天的所有训练
+            let calendar = Calendar.current
+            let today = calendar.startOfDay(for: Date())
+            let tomorrow = calendar.date(byAdding: .day, value: 1, to: today)!
+            
+            let workouts = try await healthKitManager.fetchWorkouts(from: today, to: tomorrow)
+            await MainActor.run {
+                self.recentWorkouts = workouts.map { healthKitManager.convertToWorkoutSummary($0) }
+            }
+        } catch {
+            print("Error loading workouts: \(error)")
+        }
+    }
+    
+    /// 获取训练后HRV数据
+    func getPostWorkoutHRVData(for workout: WorkoutSummary) async -> PostWorkoutHRVData {
+        // 1. 获取训练前HRV（当天早晨）
+        let dayStart = Calendar.current.startOfDay(for: workout.startDate)
+        let morningHRVs = recentHRVSamples.filter { sample in
+            sample.date >= dayStart && sample.date < workout.startDate
+        }
+        
+        guard let preHRV = morningHRVs.last else {
+            return .needMorningMeasurement
+        }
+        
+        // 2. 获取训练后HRV（训练结束后3小时内）
+        let postWindowEnd = min(
+            workout.endDate.addingTimeInterval(3 * 3600),
+            Date()
+        )
+        
+        let postWorkoutHRVs = recentHRVSamples.filter { sample in
+            sample.date >= workout.endDate && sample.date <= postWindowEnd
+        }
+        
+        if let postHRV = postWorkoutHRVs.first {
+            return .hasData(pre: preHRV.value, post: postHRV.value, workout: workout)
+        } else {
+            // 检查是否还在窗口期
+            let timeSince = Date().timeIntervalSince(workout.endDate)
+            if timeSince < 3 * 3600 {
+                return .needPostMeasurement(workout: workout, preHRV: preHRV.value)
+            } else {
+                return .missedWindow
+            }
+        }
+    }
+    
+    /// 保存训练后评估
+    func savePostWorkoutEvaluation(_ evaluation: PostWorkoutEvaluation) {
+        savedEvaluations.append(evaluation)
+        // 可以保存到UserDefaults或CoreData
+        saveEvaluationsToStorage()
+    }
+    
+    /// 保存评估到本地存储
+    private func saveEvaluationsToStorage() {
+        if let encoded = try? JSONEncoder().encode(savedEvaluations) {
+            UserDefaults.standard.set(encoded, forKey: "savedEvaluations")
+        }
+    }
+    
+    /// 从本地存储加载评估
+    func loadSavedEvaluations() {
+        if let data = UserDefaults.standard.data(forKey: "savedEvaluations"),
+           let decoded = try? JSONDecoder().decode([PostWorkoutEvaluation].self, from: data) {
+            savedEvaluations = decoded
+        }
+    }
+    
+    /// 获取最新训练的评估状态
+    func getLatestWorkoutEvaluation() -> String? {
+        guard let latestWorkout = recentWorkouts.first else {
+            return nil
+        }
+        
+        // 检查是否已评估
+        if let evaluation = savedEvaluations.first(where: { $0.workout.id == latestWorkout.id }) {
+            return "HRV \(evaluation.hrvChange >= 0 ? "+" : "")\(String(format: "%.1f", evaluation.hrvChange))% · \(evaluation.stars)"
+        }
+        
+        return nil
     }
 }
 

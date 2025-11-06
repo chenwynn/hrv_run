@@ -288,3 +288,72 @@
 "Done" = "Done";
 "No HRV Data" = "No HRV Data";
 "Use Apple Watch to measure HRV or start with Breathe app" = "Use Apple Watch to measure HRV or start with Breathe app";
+
+/* Main Page Questions and Answers */
+"Is today suitable for running?" = "Is today suitable for running?";
+"When to run?" = "When to run?";
+"What to run?" = "What to run?";
+"How was the run?" = "How was the run?";
+"Measure HRV after training to see results" = "Measure HRV after training to see results";
+"No data available" = "No data available";
+"Perfect! Excellent condition" = "Perfect! Excellent condition";
+"Good to go" = "Good to go";
+"Okay, but control intensity" = "Okay, but control intensity";
+"Not recommended, rest today" = "Not recommended, rest today";
+"Optimal window" = "Optimal window";
+"Running" = "Running";
+
+/* Post Workout Evaluation */
+"Post-Workout Evaluation" = "Post-Workout Evaluation";
+"Training Data" = "Training Data";
+"Distance" = "Distance";
+"Pace" = "Pace";
+"Calories" = "Calories";
+"Finished" = "Finished";
+"HRV Change" = "HRV Change";
+"Pre-Workout" = "Pre-Workout";
+"Post-Workout" = "Post-Workout";
+"Not measured" = "Not measured";
+"Pre" = "Pre";
+"Post" = "Post";
+"How did you feel?" = "How did you feel?";
+"Very Easy" = "Very Easy";
+"Easy" = "Easy";
+"Moderate" = "Moderate";
+"Hard" = "Hard";
+"Very Hard" = "Very Hard";
+"AI Analysis" = "AI Analysis";
+"Overall Score" = "Overall Score";
+"Subjective and objective data match" = "Subjective and objective data match";
+"Warning: Data mismatch detected" = "Warning: Data mismatch detected";
+"Recommendations" = "Recommendations";
+"Measure HRV Now" = "Measure HRV Now";
+"Measure your HRV now to evaluate training effect" = "Measure your HRV now to evaluate training effect";
+"Cancel" = "Cancel";
+"Save" = "Save";
+"Saved" = "Saved";
+"Training evaluation saved successfully" = "Training evaluation saved successfully";
+"OK" = "OK";
+"Recent Workouts" = "Recent Workouts";
+"No Recent Workouts" = "No Recent Workouts";
+"Complete a workout to see it here" = "Complete a workout to see it here";
+"Evaluate Training" = "Evaluate Training";
+"Tap to evaluate your training" = "Tap to evaluate your training";
+"Complete a workout to evaluate" = "Complete a workout to evaluate";
+"Perfect Training" = "Perfect Training";
+"Hidden Fatigue" = "Hidden Fatigue";
+"Mental Fatigue" = "Mental Fatigue";
+"Overtraining" = "Overtraining";
+"Perfect training! Your body and mind are aligned. Keep it up!" = "Perfect training! Your body and mind are aligned. Keep it up!";
+"Warning: Your body is stressed more than you feel. Reduce intensity and get more rest." = "Warning: Your body is stressed more than you feel. Reduce intensity and get more rest.";
+"Your body is fine but you feel tired. May be mental stress. Consider light recovery run or complete rest." = "Your body is fine but you feel tired. May be mental stress. Consider light recovery run or complete rest.";
+"Overtraining detected! Take 1-2 days complete rest. Reduce training load." = "Overtraining detected! Take 1-2 days complete rest. Reduce training load.";
+"Cycling" = "Cycling";
+"Walking" = "Walking";
+"Swimming" = "Swimming";
+"Hiking" = "Hiking";
+"Workout" = "Workout";
+
+/* Workout List */
+"Today's Workouts" = "Today's Workouts";
+"Loading training data..." = "Loading training data...";

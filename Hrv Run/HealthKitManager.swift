@@ -17,6 +17,19 @@ class HealthKitManager: ObservableObject {
     @Published var isAuthorized = false
     @Published var authorizationError: Error?
     
+    // MARK: - Initialization
+    
+    init() {
+        checkInitialAuthorizationStatus()
+    }
+    
+    /// 检查初始授权状态
+    private func checkInitialAuthorizationStatus() {
+        // 检查HRV数据的授权状态
+        let hrvStatus = healthStore.authorizationStatus(for: hrvType)
+        isAuthorized = (hrvStatus == .sharingAuthorized)
+    }
+    
     // MARK: - HealthKit Types
     
     /// HRV数据类型
@@ -368,6 +381,55 @@ class HealthKitManager: ObservableObject {
             }
             
             healthStore.execute(query)
+        }
+    }
+    
+    /// 获取最近N个训练
+    func fetchRecentWorkouts(limit: Int = 10) async throws -> [HKWorkout] {
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+        
+        return try await withCheckedThrowingContinuation { continuation in
+            let query = HKSampleQuery(
+                sampleType: workoutType,
+                predicate: nil,
+                limit: limit,
+                sortDescriptors: [sortDescriptor]
+            ) { _, samples, error in
+                if let error = error {
+                    continuation.resume(throwing: error)
+                    return
+                }
+                
+                let workouts = samples as? [HKWorkout] ?? []
+                continuation.resume(returning: workouts)
+            }
+            
+            healthStore.execute(query)
+        }
+    }
+    
+    /// 将HKWorkout转换为WorkoutSummary
+    func convertToWorkoutSummary(_ workout: HKWorkout) -> WorkoutSummary {
+        return WorkoutSummary(
+            id: UUID(),
+            type: workoutTypeString(workout.workoutActivityType),
+            startDate: workout.startDate,
+            endDate: workout.endDate,
+            duration: workout.duration,
+            distance: workout.totalDistance?.doubleValue(for: .meter()),
+            calories: workout.totalEnergyBurned?.doubleValue(for: .kilocalorie())
+        )
+    }
+    
+    /// 获取训练类型的本地化名称
+    private func workoutTypeString(_ type: HKWorkoutActivityType) -> String {
+        switch type {
+        case .running: return "Running"
+        case .cycling: return "Cycling"
+        case .walking: return "Walking"
+        case .swimming: return "Swimming"
+        case .hiking: return "Hiking"
+        default: return "Workout"
         }
     }
 }

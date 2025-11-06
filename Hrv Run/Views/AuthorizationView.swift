@@ -15,8 +15,8 @@ struct AuthorizationView: View {
             Spacer()
             
             // App Icon
-            if let appIcon = UIImage(named: "AppIcon") {
-                Image(uiImage: appIcon)
+            if let appIconImage = getAppIcon() {
+                Image(uiImage: appIconImage)
                     .resizable()
                     .frame(width: 100, height: 100)
                     .clipShape(RoundedRectangle(cornerRadius: 22))
@@ -96,9 +96,9 @@ struct AuthorizationView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(Color.accentColor)
+                .background(Color.purple)
                 .foregroundStyle(.white)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
             }
             .disabled(viewModel.isLoading)
             .padding(.horizontal)
@@ -106,6 +106,26 @@ struct AuthorizationView: View {
             Spacer()
         }
         .padding()
+    }
+    
+    // MARK: - Helper Methods
+    
+    /// 获取App Icon
+    private func getAppIcon() -> UIImage? {
+        // 尝试从Assets获取
+        if let appIcon = UIImage(named: "AppIcon60x60") {
+            return appIcon
+        }
+        
+        // 尝试从Bundle获取
+        guard let iconsDictionary = Bundle.main.infoDictionary?["CFBundleIcons"] as? [String: Any],
+              let primaryIconsDictionary = iconsDictionary["CFBundlePrimaryIcon"] as? [String: Any],
+              let iconFiles = primaryIconsDictionary["CFBundleIconFiles"] as? [String],
+              let lastIcon = iconFiles.last else {
+            return nil
+        }
+        
+        return UIImage(named: lastIcon)
     }
 }
 
