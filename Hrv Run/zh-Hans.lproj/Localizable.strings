@@ -358,3 +358,12 @@
 
 /* Today's Workouts */
 "Today's Workouts" = "今日训练";
+
+/* Today Measurement Prompt */
+"Good Morning!" = "早上好！";
+"Please measure your HRV to get today's recommendations" = "请测量你的HRV以获取今日建议";
+"How to measure:" = "如何测量：";
+"Open Breathe app on Apple Watch" = "在Apple Watch上打开呼吸应用";
+"Complete a 1-minute breathing session" = "完成1分钟呼吸练习";
+"HRV will sync automatically" = "HRV会自动同步";
+"Best time: 6-10 AM right after waking up" = "最佳时间：早上6-10点刚醒来时";

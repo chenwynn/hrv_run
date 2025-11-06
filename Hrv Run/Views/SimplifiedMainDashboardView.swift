@@ -25,6 +25,9 @@ struct SimplifiedMainDashboardView: View {
                             .padding()
                     } else if !viewModel.hasData {
                         EmptyStateView()
+                    } else if viewModel.needsTodayMeasurement {
+                        // 需要今天的HRV测量
+                        TodayMeasurementPromptView()
                     } else {
                         // 核心问题卡片
                         coreQuestionsSection
@@ -498,6 +501,99 @@ struct EmptyStateView: View {
                 .multilineTextAlignment(.center)
         }
         .padding()
+    }
+}
+
+// MARK: - Today Measurement Prompt
+
+struct TodayMeasurementPromptView: View {
+    var body: some View {
+        VStack(spacing: 24) {
+            // 提示卡片
+            VStack(spacing: 16) {
+                Image(systemName: "waveform.path.ecg")
+                    .font(.system(size: 60))
+                    .foregroundStyle(.purple.gradient)
+                
+                Text("Good Morning!".localized())
+                    .font(.title2)
+                    .fontWeight(.bold)
+                
+                Text("Please measure your HRV to get today's recommendations".localized())
+                    .font(.body)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+            }
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(Color(.systemBackground))
+                    .shadow(color: .black.opacity(0.05), radius: 10, y: 5)
+            )
+            
+            // 测量步骤
+            VStack(alignment: .leading, spacing: 12) {
+                Text("How to measure:".localized())
+                    .font(.headline)
+                
+                VStack(alignment: .leading, spacing: 8) {
+                    MeasurementStep(
+                        number: "1",
+                        text: "Open Breathe app on Apple Watch".localized()
+                    )
+                    
+                    MeasurementStep(
+                        number: "2",
+                        text: "Complete a 1-minute breathing session".localized()
+                    )
+                    
+                    MeasurementStep(
+                        number: "3",
+                        text: "HRV will sync automatically".localized()
+                    )
+                }
+            }
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(Color(.systemBackground))
+                    .shadow(color: .black.opacity(0.05), radius: 10, y: 5)
+            )
+            
+            // 最佳测量时间提示
+            HStack(spacing: 8) {
+                Image(systemName: "info.circle.fill")
+                    .foregroundColor(.blue)
+                Text("Best time: 6-10 AM right after waking up".localized())
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            .padding()
+        }
+    }
+}
+
+// MARK: - Measurement Step
+
+struct MeasurementStep: View {
+    let number: String
+    let text: String
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            Text(number)
+                .font(.caption)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                .frame(width: 24, height: 24)
+                .background(Color.purple)
+                .clipShape(Circle())
+            
+            Text(text)
+                .font(.body)
+                .foregroundColor(.primary)
+        }
     }
 }
 

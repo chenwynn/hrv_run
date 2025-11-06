@@ -360,3 +360,12 @@
 
 /* Today's Workouts */
 "Today's Workouts" = "Today's Workouts";
+
+/* Today Measurement Prompt */
+"Good Morning!" = "Good Morning!";
+"Please measure your HRV to get today's recommendations" = "Please measure your HRV to get today's recommendations";
+"How to measure:" = "How to measure:";
+"Open Breathe app on Apple Watch" = "Open Breathe app on Apple Watch";
+"Complete a 1-minute breathing session" = "Complete a 1-minute breathing session";
+"HRV will sync automatically" = "HRV will sync automatically";
+"Best time: 6-10 AM right after waking up" = "Best time: 6-10 AM right after waking up";

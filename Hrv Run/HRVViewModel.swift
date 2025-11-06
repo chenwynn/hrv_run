@@ -166,12 +166,21 @@ class HRVViewModel: ObservableObject {
         return !recentHRVSamples.isEmpty
     }
     
+    var hasTodayData: Bool {
+        return !todayHRVSamples.isEmpty
+    }
+    
     var currentHRVValue: Double? {
         return todayHRVSamples.last?.value ?? recentHRVSamples.last?.value
     }
     
     var baselineIsReliable: Bool {
         return baseline?.isReliable ?? false
+    }
+    
+    var needsTodayMeasurement: Bool {
+        // 如果有历史数据但没有今天的数据，需要测量
+        return hasData && !hasTodayData
     }
     
     // MARK: - Formatting Helpers
