@@ -42,7 +42,17 @@ class HRVViewModel: ObservableObject {
     // MARK: - Initialization
     
     init() {
-        checkAuthorizationStatus()
+        // 初始值设为true，等待异步检查完成
+        needsAuthorization = true
+        
+        // 启动异步授权检查
+        Task {
+            // 等待HealthKitManager完成初始检查
+            try? await Task.sleep(nanoseconds: 500_000_000) // 0.5秒
+            await MainActor.run {
+                needsAuthorization = !healthKitManager.isAuthorized
+            }
+        }
     }
     
     // MARK: - Authorization
@@ -139,7 +149,19 @@ class HRVViewModel: ObservableObject {
     
     /// 刷新数据
     func refresh() async {
+        print("🔄 [ViewModel] Refreshing data...")
+        print("🔄 [ViewModel] Current today samples: \(todayHRVSamples.count)")
+        if let latest = todayHRVSamples.last {
+            print("🔄 [ViewModel] Current latest HRV: \(latest.value)ms at \(latest.date)")
+        }
+        
         await loadData()
+        
+        print("✅ [ViewModel] Refresh complete")
+        print("✅ [ViewModel] New today samples: \(todayHRVSamples.count)")
+        if let latest = todayHRVSamples.last {
+            print("✅ [ViewModel] New latest HRV: \(latest.value)ms at \(latest.date)")
+        }
     }
     
     /// 重新计算基准

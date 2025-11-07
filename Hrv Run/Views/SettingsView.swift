@@ -65,28 +65,42 @@ struct SettingsView: View {
                 
                 // Health Permissions Section
                 Section {
-                    Button {
-                        Task {
-                            await viewModel.requestAuthorization()
-                        }
-                    } label: {
-                        HStack {
-                            Image(systemName: "heart.text.square")
-                                .foregroundStyle(.red)
-                            Text(LocalizedStringKey("Request Authorization"))
-                            Spacer()
-                            if viewModel.isLoading {
-                                ProgressView()
+                    HStack {
+                        Image(systemName: "heart.text.square")
+                            .foregroundStyle(.red)
+                        Text(LocalizedStringKey("Health Permissions"))
+                        Spacer()
+                        if viewModel.needsAuthorization {
+                            Button {
+                                Task {
+                                    await viewModel.requestAuthorization()
+                                }
+                            } label: {
+                                Text(LocalizedStringKey("Request Authorization"))
+                                    .foregroundColor(.blue)
                             }
+                            .disabled(viewModel.isLoading)
+                        } else {
+                            HStack(spacing: 4) {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .foregroundColor(.green)
+                                Text(LocalizedStringKey("Authorized"))
+                                    .foregroundColor(.green)
+                            }
+                            .font(.subheadline)
                         }
                     }
-                    .disabled(viewModel.isLoading)
                     
                 } header: {
                     Text(LocalizedStringKey("Health Permissions"))
                 } footer: {
-                    Text(LocalizedStringKey("Grant access to read HRV data and save workout information."))
-                        .font(.caption)
+                    if viewModel.needsAuthorization {
+                        Text(LocalizedStringKey("Grant access to read HRV data and save workout information."))
+                            .font(.caption)
+                    } else {
+                        Text(LocalizedStringKey("Health data access has been granted."))
+                            .font(.caption)
+                    }
                 }
                 
                 // Notifications Section

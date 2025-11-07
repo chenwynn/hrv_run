@@ -369,3 +369,23 @@
 "Complete a 1-minute breathing session" = "Complete a 1-minute breathing session";
 "HRV will sync automatically" = "HRV will sync automatically";
 "Best time: 6-10 AM right after waking up" = "Best time: 6-10 AM right after waking up";
+
+/* User Profile */
+"Edit Profile" = "Edit Profile";
+"Preview" = "Preview";
+"Nickname" = "Nickname";
+"Enter your nickname" = "Enter your nickname";
+"Choose Avatar" = "Choose Avatar";
+"People" = "People";
+"Animals" = "Animals";
+"Nature" = "Nature";
+"Sports" = "Sports";
+"Food" = "Food";
+"Runner" = "Runner";
+
+/* Launch Screen */
+"Adaptive Running Training" = "Adaptive Running Training";
+
+/* Settings - Health */
+"Authorized" = "Authorized";
+"Health data access has been granted." = "Health data access has been granted.";

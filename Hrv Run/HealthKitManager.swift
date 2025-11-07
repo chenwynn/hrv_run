@@ -20,14 +20,33 @@ class HealthKitManager: ObservableObject {
     // MARK: - Initialization
     
     init() {
-        checkInitialAuthorizationStatus()
+        // 异步检查授权状态
+        Task {
+            await checkInitialAuthorizationStatus()
+        }
     }
     
     /// 检查初始授权状态
-    private func checkInitialAuthorizationStatus() {
-        // 检查HRV数据的授权状态
-        let hrvStatus = healthStore.authorizationStatus(for: hrvType)
-        isAuthorized = (hrvStatus == .sharingAuthorized)
+    private func checkInitialAuthorizationStatus() async {
+        // HealthKit的读取权限无法直接查询状态（隐私保护）
+        // 我们通过尝试读取数据来判断是否已授权
+        do {
+            let endDate = Date()
+            let startDate = Calendar.current.date(byAdding: .day, value: -1, to: endDate)!
+            
+            // 尝试读取最近1天的HRV数据
+            let _ = try await fetchHRVData(from: startDate, to: endDate)
+            
+            // 如果能读取到数据（或没有错误），说明已授权
+            await MainActor.run {
+                self.isAuthorized = true
+            }
+        } catch {
+            // 如果出错，说明未授权
+            await MainActor.run {
+                self.isAuthorized = false
+            }
+        }
     }
     
     // MARK: - HealthKit Types

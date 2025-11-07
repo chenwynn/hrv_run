@@ -85,7 +85,7 @@ struct DataQualityIndicatorView: View {
                                     .fontWeight(.semibold)
                                     .foregroundColor(.secondary)
                                 
-                                ForEach(quality.issues, id: \.self) { issue in
+                                ForEach(Array(quality.issues.enumerated()), id: \.offset) { index, issue in
                                     HStack(alignment: .top, spacing: 6) {
                                         Image(systemName: "info.circle.fill")
                                             .font(.caption)

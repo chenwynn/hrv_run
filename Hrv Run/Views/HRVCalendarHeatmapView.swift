@@ -43,7 +43,7 @@ struct HRVCalendarHeatmapView: View {
             
             // 星期标签
             HStack(spacing: 4) {
-                ForEach(weekdaySymbols, id: \.self) { symbol in
+                ForEach(Array(weekdaySymbols.enumerated()), id: \.offset) { index, symbol in
                     Text(symbol)
                         .font(.caption2)
                         .foregroundColor(.secondary)

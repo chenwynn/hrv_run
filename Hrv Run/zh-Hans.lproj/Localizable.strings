@@ -367,3 +367,23 @@
 "Complete a 1-minute breathing session" = "完成1分钟呼吸练习";
 "HRV will sync automatically" = "HRV会自动同步";
 "Best time: 6-10 AM right after waking up" = "最佳时间：早上6-10点刚醒来时";
+
+/* User Profile */
+"Edit Profile" = "编辑资料";
+"Preview" = "预览";
+"Nickname" = "昵称";
+"Enter your nickname" = "输入你的昵称";
+"Choose Avatar" = "选择头像";
+"People" = "人物";
+"Animals" = "动物";
+"Nature" = "自然";
+"Sports" = "运动";
+"Food" = "食物";
+"Runner" = "跑者";
+
+/* Launch Screen */
+"Adaptive Running Training" = "自适应跑步训练";
+
+/* Settings - Health */
+"Authorized" = "已授权";
+"Health data access has been granted." = "健康数据访问权限已授予。";

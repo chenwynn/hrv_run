@@ -130,6 +130,11 @@ class NotificationManager: ObservableObject {
     
     /// 处理新的HRV数据
     private func handleNewHRVData() async {
+        // 发送通知给前台应用刷新数据
+        await MainActor.run {
+            NotificationCenter.default.post(name: NSNotification.Name("HRVDataUpdated"), object: nil)
+        }
+        
         guard notificationsEnabled else { return }
         
         do {

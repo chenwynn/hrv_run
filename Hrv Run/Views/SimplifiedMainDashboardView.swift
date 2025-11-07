@@ -11,10 +11,13 @@ import SwiftUI
 struct SimplifiedMainDashboardView: View {
     @ObservedObject var viewModel: HRVViewModel
     @StateObject private var appSettings = AppSettings.shared
+    @StateObject private var userProfile = UserProfile.shared
     @State private var showSettings = false
     @State private var showDetailedData = false
     @State private var showWorkoutsList = false
+    @State private var showProfileEdit = false
     @State private var evaluationItem: EvaluationItem?
+    @State private var refreshTimer: Timer?
     
     var body: some View {
         NavigationStack {
@@ -39,9 +42,24 @@ struct SimplifiedMainDashboardView: View {
                 .padding()
             }
             .id(appSettings.selectedLanguage)
-            .navigationTitle("HRV Run \(statusEmoji)")
-            .navigationBarTitleDisplayMode(.large)
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                // 左侧：用户头像和昵称
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        showProfileEdit = true
+                    } label: {
+                        HStack(spacing: 8) {
+                            Text(userProfile.avatarEmoji)
+                                .font(.title3)
+                            Text(userProfile.nickname)
+                                .font(.headline)
+                                .foregroundColor(.primary)
+                        }
+                    }
+                }
+                
+                // 右侧：设置按钮
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         showSettings = true
@@ -49,17 +67,9 @@ struct SimplifiedMainDashboardView: View {
                         Image(systemName: "gearshape")
                     }
                 }
-                
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        Task {
-                            await viewModel.refresh()
-                        }
-                    } label: {
-                        Image(systemName: "arrow.clockwise")
-                    }
-                    .disabled(viewModel.isLoading)
-                }
+            }
+            .sheet(isPresented: $showProfileEdit) {
+                UserProfileEditView(profile: userProfile)
             }
             .sheet(isPresented: $showSettings) {
                 SettingsView(viewModel: viewModel)
@@ -150,6 +160,58 @@ struct SimplifiedMainDashboardView: View {
                 await viewModel.loadData()
             }
         }
+        .onAppear {
+            // 每次显示主界面时刷新数据
+            Task {
+                await viewModel.refresh()
+            }
+            
+            // 启动定时刷新（每30秒检查一次新数据）
+            startAutoRefresh()
+        }
+        .onDisappear {
+            // 停止定时刷新
+            stopAutoRefresh()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            // 应用进入前台时刷新数据
+            Task {
+                await viewModel.refresh()
+            }
+            startAutoRefresh()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
+            // 应用进入后台时停止定时刷新
+            stopAutoRefresh()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("HRVDataUpdated"))) { _ in
+            // 收到HRV数据更新通知时刷新
+            Task {
+                await viewModel.refresh()
+            }
+        }
+    }
+    
+    // MARK: - Auto Refresh
+    
+    private func startAutoRefresh() {
+        // 停止之前的timer
+        stopAutoRefresh()
+        
+        // 每30秒刷新一次
+        refreshTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true) { _ in
+            print("⏰ [Auto Refresh] Timer triggered, refreshing data...")
+            Task {
+                await viewModel.refresh()
+                print("✅ [Auto Refresh] Data refreshed")
+            }
+        }
+        print("✅ [Auto Refresh] Timer started (30s interval)")
+    }
+    
+    private func stopAutoRefresh() {
+        refreshTimer?.invalidate()
+        refreshTimer = nil
     }
     
     // MARK: - Core Questions Section
